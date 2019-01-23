@@ -7,7 +7,7 @@ document.addEventListener( "DOMContentLoaded", () => {
     new Image( "https://curriculum-content.s3.amazonaws.com/fewpjs/fewpjs-oo-mvc-content/hellocat.png", "Cat picture" )
   ]
 
-  components.forEach( component => document.body.appendChild( component.render() ) )
+  components.forEach( component => component.render() )
 } )
 
 class Header {
@@ -22,7 +22,7 @@ class Header {
   render() {
     let h1 = document.createElement( 'h1' );
     h1.innerText = this.text;
-    return h1
+    document.body.appendChild( h1 )
   }
 }
 
@@ -38,7 +38,7 @@ class Paragraph {
   render() {
     let p = document.createElement( 'p' );
     p.innerText = this.text;
-    return p
+    document.body.appendChild( p )
   }
 }
 
@@ -60,6 +60,6 @@ class Image {
     let img = document.createElement( 'img' );
     img.src = this.src;
     img.alt = this.alt;
-    return img
+    document.body.appendChild( img )
   }
 }
