@@ -5,9 +5,10 @@ describe( 'index.js', () => {
       header = new Header( 'test' )
     } )
 
-    it( 'has a render() method that returns an h1 element', () => {
-      expect( header.render().outerHTML ).to.eql( "<h1></h1>" )
-      expect( header.render().innerText ).to.eql( "test" )
+    it( 'has a render() method that adds an h1 element to the DOM', () => {
+      expect( document.querySelectorAll( 'h1' ).length ).to.eql( 0 );
+      header.render()
+      expect( document.querySelectorAll( 'h1' ).length ).to.eql( 1 );
     } )
 
 
@@ -21,8 +22,9 @@ describe( 'index.js', () => {
     } )
 
     it( 'has a render() method that returns an h1 element', () => {
-      expect( paragraph.render().outerHTML ).to.eql( "<p></p>" )
-      expect( paragraph.render().innerText ).to.eql( "test2" )
+      expect( document.querySelectorAll( 'p' ).length ).to.eql( 0 );
+      paragraph.render()
+      expect( document.querySelectorAll( 'p' ).length ).to.eql( 1 );
     } )
   } )
 
@@ -35,8 +37,14 @@ describe( 'index.js', () => {
     } )
 
     it( 'has a render() method that returns an h1 element', () => {
-      expect( image.render().outerHTML ).to.eql( '<img src="source" alt="alt text">' )
+      expect( document.querySelectorAll( 'img' ).length ).to.eql( 0 );
+      image.render()
+      expect( document.querySelectorAll( 'img' ).length ).to.eql( 1 );
     } )
+  } )
+
+  after( () => {
+    document.body.innerHTML = ''
   } )
 
 } )
